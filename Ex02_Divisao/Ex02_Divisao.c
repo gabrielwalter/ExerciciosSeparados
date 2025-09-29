@@ -18,7 +18,7 @@ int main(void) {
     for (int i = 0; i < 5; ++i)
         printf("c[%d]=%d  ", i, c[i]);
     printf("\n");
-
+    printf("Muito cansado!");
 
 
     return 0;
