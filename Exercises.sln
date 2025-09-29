@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ex02_Divisao", "Ex02_Divisa
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GabiELucca", "GabiELucca\GabiELucca.vcxproj", "{ADA8737A-FAD1-4609-A4E1-E7847E2B220E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ex03_Multi", "Ex03_Multi\Ex03_Multi.vcxproj", "{16E0D92D-9F26-4171-8458-B62E8E9927F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{ADA8737A-FAD1-4609-A4E1-E7847E2B220E}.Release|x64.Build.0 = Release|x64
 		{ADA8737A-FAD1-4609-A4E1-E7847E2B220E}.Release|x86.ActiveCfg = Release|Win32
 		{ADA8737A-FAD1-4609-A4E1-E7847E2B220E}.Release|x86.Build.0 = Release|Win32
+		{16E0D92D-9F26-4171-8458-B62E8E9927F9}.Debug|x64.ActiveCfg = Debug|x64
+		{16E0D92D-9F26-4171-8458-B62E8E9927F9}.Debug|x64.Build.0 = Debug|x64
+		{16E0D92D-9F26-4171-8458-B62E8E9927F9}.Debug|x86.ActiveCfg = Debug|Win32
+		{16E0D92D-9F26-4171-8458-B62E8E9927F9}.Debug|x86.Build.0 = Debug|Win32
+		{16E0D92D-9F26-4171-8458-B62E8E9927F9}.Release|x64.ActiveCfg = Release|x64
+		{16E0D92D-9F26-4171-8458-B62E8E9927F9}.Release|x64.Build.0 = Release|x64
+		{16E0D92D-9F26-4171-8458-B62E8E9927F9}.Release|x86.ActiveCfg = Release|Win32
+		{16E0D92D-9F26-4171-8458-B62E8E9927F9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
