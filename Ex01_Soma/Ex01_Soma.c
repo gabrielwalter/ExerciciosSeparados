@@ -5,7 +5,8 @@ int main(void) {
 
     setlocale(LC_ALL, "");
 
-    printf("Ol�, mundo! hihi\n"); // remover
+    printf("Olá, mundo! hihi\n"); // remover
+    printf("Dormiu, Jojô?\n");
 
 
 
