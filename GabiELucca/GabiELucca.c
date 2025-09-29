@@ -6,7 +6,7 @@ int main() {
     setlocale(LC_ALL, "");
     while (1 == 1) {
 
-        printf("Gabriel Walter e Lucca amizade eterna! Irmão. Gratidão!\n");
+        printf("Gabriel Walter e Lucca amizade eterna! Irmão. Gratidão! Beijooo\n");
     }
 
 }
