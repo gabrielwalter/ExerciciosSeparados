@@ -1,3 +1,4 @@
+
 # Visual Studio
 .vs/
 *.user
@@ -6,3 +7,27 @@
 # Compilados
 bin/
 obj/
+
+# Pastas de build
+Debug/
+Release/
+x64/
+x86/
+
+# Arquivos binários e intermediários
+*.exe
+*.dll
+*.obj
+*.o
+*.lib
+*.pdb
+*.bin
+
+# Configurações de usuário do Visual Studio
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Pastas do Visual Studio
+.vs/
