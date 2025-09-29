@@ -31,3 +31,20 @@ x86/
 
 # Pastas do Visual Studio
 .vs/
+
+# Pastas e arquivos de Build/Binário
+**/*.exe
+**/*.pdb
+**/*.dll
+**/*.obj
+**/*.ilk
+**/*.idb
+**/*.tlog
+**/*.log
+**/*.recipe
+
+# Pastas comuns do Visual Studio
+Debug/
+Release/
+x64/
+x86/
