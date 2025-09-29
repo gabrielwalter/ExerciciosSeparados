@@ -5,10 +5,10 @@ int main(void) {
 
     setlocale(LC_ALL, "");
 
-    printf("Meu gatinho � lindo!\n"); // remover
+    printf("Meu gatinho é lindo!\n"); // remover
 
     int a[5] = {1, 2};
-    int b[5];          // n�o inicializado
+    int b[5];          // não inicializado
     int c[5] = {0};
 
     for (int i = 0; i < 5; ++i)
@@ -19,6 +19,7 @@ int main(void) {
         printf("c[%d]=%d  ", i, c[i]);
     printf("\n");
     printf("Muito cansado!");
+    printf("Força e muita força!");
 
 
     return 0;
