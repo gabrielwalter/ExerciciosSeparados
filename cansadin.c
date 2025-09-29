@@ -5,6 +5,6 @@ int main() {
     printf("Que horas são? (formato HH MM): ");
     scanf("%d %d", &hora, &minuto);
 
-    printf("É hora de comer um doce!\n");
+    printf("É hora de comer um doce!! Delíciaaaa\n");
     return 0;
 }
