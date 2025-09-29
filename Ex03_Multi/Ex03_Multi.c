@@ -5,9 +5,9 @@ int main(void) {
 
     setlocale(LC_ALL, "");
 
-    printf("Olá, mundo! hihi\n"); // remover
-
-
+    printf("Olá, mundo!\n"); // remover
+    
+    printf("Exercício de multiplicação!");
 
 
 
