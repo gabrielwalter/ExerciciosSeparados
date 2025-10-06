@@ -14,6 +14,7 @@ bin/
 obj/
 
 # Pastas de build
+build/
 Debug/
 Release/
 x64/
@@ -53,3 +54,4 @@ Debug/
 Release/
 x64/
 x86/
+
