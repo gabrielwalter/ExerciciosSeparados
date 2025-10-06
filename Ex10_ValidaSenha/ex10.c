@@ -20,5 +20,5 @@ void Ex10_ValidaSenha(void) {
         }
     }
 
-    printf("Número de tentativas excedido. Acesso negado.\n");
+    printf("NÃºmero de tentativas excedido. Acesso negado.\n");
 }
