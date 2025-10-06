@@ -1,3 +1,8 @@
+# VS Code
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/settings.json
 
 # Visual Studio
 .vs/
