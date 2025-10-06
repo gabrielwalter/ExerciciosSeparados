@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.16)
+project(primeiros_exercicios_c C)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
+# Para cada subpasta em "exercicios/<nome>", cria um alvo com todos os .c dessa pasta.
+file(GLOB children RELATIVE "${CMAKE_SOURCE_DIR}/exercicios" "${CMAKE_SOURCE_DIR}/exercicios/*")
+foreach(child ${children})
+    if(IS_DIRECTORY "${CMAKE_SOURCE_DIR}/exercicios/${child}")
+        file(GLOB ex_srcs CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/exercicios/${child}/*.c")
+        if(ex_srcs)
+            string(REPLACE " " "_" target "${child}")
+            add_executable(${target} ${ex_srcs})
+        endif()
+    endif()
+endforeach()
