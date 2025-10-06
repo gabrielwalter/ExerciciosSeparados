@@ -1,115 +1,84 @@
 # ExerciciosSeparados
 
-Cada código tem sua função `main`.
-
-## Sobre o repositório
-
-Projeto em C que organiza exercícios de programação em arquivos separados, com foco em modularidade, prática de lógica e uso eficiente de Makefile.
-
-### Diferencial em relação ao projeto [MenuExercicios](https://github.com/gabrielwalter/MenuExercicios)
-
-- **MenuExercicios**: Contém apenas uma função `int main` no arquivo `menu.c`. Os demais exercícios possuem apenas funções `void`, sendo chamadas pelo menu principal.
-- **ExerciciosSeparados** (este repositório): **Cada exercício possui sua própria função `main`**, possibilitando compilar e executar cada arquivo separadamente, sem necessidade de um menu central.
+> **Este projeto é complementar ao [MenuExercicios](https://github.com/gabrielwalter/MenuExercicios).  
+> Entenda a diferença:**  
+> - **MenuExercicios:** Apenas **um `int main`** no arquivo `menu.c`. Os exercícios são funções `void` chamadas pelo menu.  
+> - **ExerciciosSeparados:** **Cada exercício possui sua própria função `main`** e pode ser compilado e executado individualmente.  
+> Use ambos para praticar diferentes abordagens de organização e execução de exercícios!
 
 ---
 
-## Como executar no **Visual Studio 2022** (Windows)
+## Sobre o repositório
+
+Projeto em C que organiza exercícios de programação em arquivos separados, cada um com sua própria função `main`. Foco em modularidade, prática de lógica e automação de compilação com Makefile e CMake.
+
+---
+
+## Como executar no **Visual Studio** (Windows)
 
 1. **Clone o repositório**:
-   ```sh
-   git clone https://github.com/gabrielwalter/ExerciciosSeparados.git
-   ```
-2. **Abra o Visual Studio 2022** e selecione **"Abrir uma pasta"**.
-3. Selecione a pasta clonada do repositório.
-4. Visual Studio irá detectar os arquivos `.c`. Você pode compilar e executar cada arquivo individualmente:
-   - Clique com o botão direito no arquivo desejado > **Compilar e Executar**.
-   - Caso prefira criar projetos separados, basta adicionar cada arquivo como um novo projeto do tipo "Console Application".
+    ```sh
+    git clone https://github.com/gabrielwalter/ExerciciosSeparados.git
+    ```
+2. **Abra o Visual Studio** e selecione **"Abrir uma pasta"**.
+3. Compile e execute cada arquivo individualmente:
+    - Clique com o botão direito no arquivo desejado > **Compilar e Executar**.
+    - Ou crie projetos separados adicionando cada arquivo como "Console Application".
 
 ---
 
 ## Como executar no **VS Code**
 
-### **Windows (nativo ou com MinGW/WSL)**
+### Windows (nativo ou com MinGW/WSL)
+1. Certifique-se de ter um compilador C instalado (MinGW ou GCC via WSL).
+2. Pressione `Ctrl+Shift+B` para compilar todos os exercícios via Makefile.
+3. Execute cada exercício com o comando correspondente (ex: `./bin/ex01`).
 
-1. **Clone o repositório**:
-   ```sh
-   git clone https://github.com/gabrielwalter/ExerciciosSeparados.git
-   ```
-2. **Abra a pasta no VS Code**.
-3. Certifique-se de ter um compilador C instalado (MinGW ou GCC via WSL).
-
-- **Compilando um exercício individual** (exemplo para `exercicio1.c`):
-  ```sh
-  gcc exercicio1.c -o exercicio1
-  ./exercicio1
-  ```
-
-### **Linux (Terminal ou WSL)**
-
-1. **Clone o repositório**:
-   ```sh
-   git clone https://github.com/gabrielwalter/ExerciciosSeparados.git
-   cd ExerciciosSeparados
-   ```
-2. **Compile e execute o exercício desejado**:
-   ```sh
-   gcc exercicio2.c -o exercicio2
-   ./exercicio2
-   ```
+### Linux (Terminal ou WSL)
+1. Compile e execute o exercício desejado:
+    ```sh
+    make           # Compila todos os exercícios
+    ./bin/ex01     # Executa o exercício ex01
+    ```
 
 ---
 
-## Dicas Extras
+## 🛠️ Makefile
 
-- Os arquivos estão organizados para facilitar a identificação de cada exercício.
-- Modifique ou crie novos arquivos `.c` à vontade, sempre mantendo a função `main` separada para cada exercício.
-- O uso de `Makefile` e `CMake` está disponível no repositório para facilitar automação de compilação. Consulte os arquivos correspondentes para instruções específicas.
-
----
-
-## 🛠️ Estrutura
-
-Cada exercício está em um arquivo .c separado (ex: ex01.c, ex02.c, etc.), com sua própria função main(). Isso permite testes isolados, facilita a manutenção e torna o projeto mais modular.
+- `make` — compila todos os exercícios gerando binários individuais em `bin/`
+- `make run PROG=ex01` — executa o binário desejado
+- `make clean` — remove os binários gerados
+- `make new` — cria automaticamente uma nova pasta de exercício com um `main.c`
+- `make help` — mostra comandos disponíveis
 
 ---
 
-## 🚀 Como compilar e executar com Makefile
+## Estrutura
 
-Requisitos:
-- GCC instalado
-- Make instalado
-
-Comandos:
-```sh
-make            # Compila todos os arquivos .c e gera os executáveis
-make clean      # Remove os binários gerados
 ```
-
-Se houver um Makefile com suporte a make run, ele pode executar um dos exercícios automaticamente.
-
----
-
-## 📂 Exemplo de uso
-
-```sh
-$ make
-gcc -std=c17 -Wall -O2 -g ex01.c -o ex01
-gcc -std=c17 -Wall -O2 -g ex02.c -o ex02
-...
-$ ./ex01
-(Saída do exercício 01)
+ExerciciosSeparados/
+├── Ex01_Soma/ (pasta de exercício)
+│   └── main.c    # Cada exercício tem seu próprio int main
+├── Ex02_Media/
+│   └── main.c
+├── bin/          # Binários gerados
+├── Makefile      # Build automatizado
+├── .vscode/      # Configurações do VS Code (build/depuração)
+├── .gitignore    # Arquivos ignorados no Git
 ```
 
 ---
 
-## Linguagens utilizadas
+## 📋 Requisitos
 
-- **C** (principal)
-- Makefile, CMake, Shell, PowerShell (scripts e automação)
+- Visual Studio 2019 ou superior (Windows) **OU**
+- VS Code + GCC/MinGW (Windows, Linux, WSL)
+- Make (Linux/WSL/MinGW)
+- Opcional: clang-format para formatação automática
 
 ---
 
-## 📌 Autor
+## Autor
 
 Gabriel Walter  
 Joinville, SC – Brasil  
