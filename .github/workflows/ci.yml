@@ -1,0 +1,49 @@
+name: CI - Make build & smoke tests
+
+on:
+  push:
+    branches: [ main, fix/makefile-new-script ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install build essentials
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y build-essential make gcc
+      - name: Make - new + build
+        run: |
+          make -B new PROG=exci
+          make
+      - name: Run smoke test
+        run: |
+          if [ -x ./bin/exci ]; then ./bin/exci; else echo "bin/exci missing"; exit 1; fi
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install MSYS2 and make
+        shell: powershell
+        run: |
+          choco install -y msys2
+          refreshenv
+          $env:PATH = "C:\\tools\\msys64\\usr\\bin;" + $env:PATH
+      - name: Ensure gcc and make available
+        shell: bash
+        run: |
+          pacman -Syu --noconfirm || true
+          pacman -S --noconfirm base-devel mingw-w64-x86_64-gcc mingw-w64-x86_64-make
+      - name: Make - new + build (MSYS)
+        shell: bash
+        run: |
+          make -B new PROG=exci
+          make
+      - name: Run smoke test
+        shell: bash
+        run: |
+          if [ -x ./bin/exci ]; then ./bin/exci; else echo "bin/exci missing"; exit 1; fi
