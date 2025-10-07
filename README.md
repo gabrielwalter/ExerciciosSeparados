@@ -83,3 +83,54 @@ ExerciciosSeparados/
 Gabriel Walter  
 Joinville, SC – Brasil  
 Desenvolvedor em formação, focado em C, automação com Makefile e boas práticas de código.
+
+## 🚀 Como compilar e executar
+
+### 🪟 Visual Studio 2022 (Windows)
+
+#### CMake (recomendado)
+1. **File → Open → Folder** (abra a pasta do projeto)
+2. Visual Studio detecta `CMakeLists.txt` automaticamente
+3. Selecione o exercício na barra de ferramentas (ex01, ex02, etc)
+4. Pressione `F5` para compilar e depurar
+
+### 💻 VS Code (Windows, Linux, WSL, Codespaces)
+
+#### Pré-requisitos
+\```bash
+# Linux/WSL/Codespaces
+sudo apt update && sudo apt install -y build-essential gdb cmake
+
+# Windows (chocolatey)
+choco install mingw cmake
+\```
+
+#### Opção 1: Makefile (padrão)
+1. Pressione `Ctrl+Shift+B` para compilar todos
+2. Pressione `F5` para depurar (escolha o exercício)
+3. Ou execute no terminal:
+   \```bash
+   make              # compila todos
+   make run PROG=ex01  # executa ex01
+   make list         # lista exercícios
+   \```
+
+#### Opção 2: CMake (cross-platform)
+1. Execute no terminal:
+   \```bash
+   cmake -B build -S .
+   cmake --build build
+   ./build/ex01          # Linux
+   .\build\ex01.exe      # Windows
+   \```
+
+### 📋 Comandos úteis
+
+\```bash
+make                # Compila todos os exercícios
+make run PROG=ex05  # Executa exercício 05
+make list           # Lista todos os exercícios
+make clean          # Remove binários
+make help           # Mostra ajuda
+\```
+

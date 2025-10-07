@@ -55,3 +55,19 @@ Release/
 x64/
 x86/
 
+
+# CMake
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Makefile binários
+bin/
+
+# Binários individuais
+ex[0-9][0-9]
+ex[0-9][0-9][0-9]
+
+# Backup
+*.bak

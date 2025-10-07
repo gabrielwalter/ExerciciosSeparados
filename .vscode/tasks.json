@@ -9,15 +9,60 @@
         "kind": "build",
         "isDefault": true
       },
-      "problemMatcher": ["$gcc"],
-      "detail": "Compila todos os exercícios usando o Makefile"
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "detail": "Compila todos os exerc\u00edcios usando Makefile"
     },
     {
-      "label": "Limpar binários",
+      "label": "Executar exerc\u00edcio",
+      "type": "shell",
+      "command": "make run PROG=${input:exercicio}",
+      "dependsOn": [
+        "Compilar com Make"
+      ],
+      "detail": "Executa um exerc\u00edcio espec\u00edfico"
+    },
+    {
+      "label": "Limpar bin\u00e1rios",
       "type": "shell",
       "command": "make clean",
-      "group": "none",
-      "detail": "Remove a pasta bin/"
+      "detail": "Remove os bin\u00e1rios gerados"
+    },
+    {
+      "label": "CMake: Configure",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "-B",
+        "build",
+        "-S",
+        "."
+      ],
+      "group": "build",
+      "detail": "Configura o projeto com CMake"
+    },
+    {
+      "label": "CMake: Build",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "build"
+      ],
+      "group": "build",
+      "dependsOn": [
+        "CMake: Configure"
+      ],
+      "detail": "Compila o projeto com CMake"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "exercicio",
+      "type": "promptString",
+      "description": "Nome do exerc\u00edcio (ex: ex01, ex02, etc)",
+      "default": "ex01"
     }
   ]
 }

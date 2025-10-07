@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Depurar exercício ex01",
+      "name": "Debug ex01",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/bin/ex01",
@@ -10,9 +10,46 @@
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],
-      "externalConsole": true,
+      "externalConsole": false,
       "MIMode": "gdb",
-      "preLaunchTask": "Compilar com Make"
+      "setupCommands": [
+        {
+          "description": "Habilitar impress\u00e3o formatada para gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "Compilar com Make",
+      "miDebuggerPath": "/usr/bin/gdb"
+    },
+    {
+      "name": "Debug - Escolher exerc\u00edcio",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/${input:exercicio}",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Habilitar impress\u00e3o formatada para gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "Compilar com Make",
+      "miDebuggerPath": "/usr/bin/gdb"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "exercicio",
+      "type": "promptString",
+      "description": "Nome do exerc\u00edcio (ex: ex01, ex02, etc)",
+      "default": "ex01"
     }
   ]
 }
