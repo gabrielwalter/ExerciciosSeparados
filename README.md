@@ -51,7 +51,7 @@ Ex03_ParOuImpar/    ← Exercício 3 (verifica par ou ímpar)
 
 **Para depurar (F5):**
 - Pressione `F5`
-- É preciso instalar a extensão C/C++ da Microsoft
+- É preciso instalar a extensão C/C++ da Microsoft no Codespace
 - Escolha "Debug - Escolher exercício"
 - Digite o nome (ex: `ex01`)
 - O programa vai parar nos breakpoints
