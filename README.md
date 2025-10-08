@@ -1,3 +1,5 @@
+AINDA A ENTENDER: criação de executável em cada pasta (também no bin quando solicitado, mas isso já é esperado) e sem permissão de rodar E make new não funciona.
+
 # 📚 ExerciciosSeparados
 
 > **🆕 Primeira vez aqui? Este guia vai te ensinar TUDO passo a passo!**
