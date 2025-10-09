@@ -1,4 +1,4 @@
-AINDA A ENTENDER: criação de executável em cada pasta (também no bin quando solicitado, mas isso já é esperado) e sem permissão de rodar E make new não funciona.
+AINDA A ENTENDER: COMPILAÇÃO N É FEITA NO VS CODE DESKTOP NEM NO LINUX COM O MAKE
 
 # 📚 ExerciciosSeparados
 
