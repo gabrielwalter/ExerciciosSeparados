@@ -163,6 +163,41 @@ No VS Code:
 
 </details>
 
+<details>
+<summary><b>🐧 Estou no WSL (Windows Subsystem for Linux) / VS Code no Windows</b></summary>
+
+Se você usa WSL + VS Code, é comum o terminal integrado pedir a passphrase da sua chave SSH em cada nova sessão — isso pode interromper operações como depuração. Uma solução prática é usar o `keychain` para carregar a chave apenas na primeira abertura da sessão.
+
+Passos rápidos:
+1. Instale o keychain:
+   ```bash
+   sudo apt update && sudo apt install keychain -y
+   ```
+
+2. Adicione ao final do seu `~/.bashrc` (substitua `id_ed25519` pelo nome da sua chave, se for diferente):
+   ```bash
+   eval "$(keychain --eval --agents ssh id_ed25519)"
+   ```
+
+3. Recarregue o shell ou abra um novo terminal:
+   ```bash
+   source ~/.bashrc
+   ```
+
+Notas importantes:
+- Na primeira abertura após reboot/login você deverá digitar a passphrase; depois disso o keychain reaplica a chave para novas shells na mesma sessão até o próximo reboot/login.
+- Para verificar se a chave foi carregada: `ssh-add -l`
+- Segurança: nunca adicione chaves privadas ou passphrases neste README nem em repositórios públicos.
+
+- Para usuários de `zsh`: adicione a mesma linha ao seu `~/.zshrc` em vez do `~/.bashrc`:
+   ```bash
+   eval "$(keychain --eval --agents ssh id_ed25519)"
+   ```
+
+- Encaminhar o agente SSH do Windows para o WSL: se você usa o OpenSSH do Windows (ou um agente do Windows), é possível encaminhar o agente para o WSL e evitar gerenciar chaves separadamente. Essa configuração é mais avançada e depende do agente que você usa (OpenSSH, Pageant, etc.). Se quiser, posso descrever o passo a passo para o seu caso.
+
+</details>
+
 ---
 
 ## 🐛 Como depurar (encontrar erros)
