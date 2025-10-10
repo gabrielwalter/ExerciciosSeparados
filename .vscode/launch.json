@@ -10,11 +10,11 @@
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],
-      "externalConsole": true,
+      "externalConsole": false,
       "MIMode": "gdb",
       "setupCommands": [
         {
-          "description": "Habilitar impress\u00e3o formatada para gdb",
+          "description": "Habilitar impressão formatada para gdb",
           "text": "-enable-pretty-printing",
           "ignoreFailures": true
         }
