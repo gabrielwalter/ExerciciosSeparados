@@ -71,3 +71,6 @@ ex[0-9][0-9][0-9]
 
 # Backup
 *.bak
+
+# Ignorar executáveis gerados dentro de pastas de exercício (exemplo: Ex02_Media/ex002)
+Ex*/ex*

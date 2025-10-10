@@ -1,0 +1,82 @@
+name: CI - Make build & smoke tests
+
+on:
+  push:
+    branches: [ main, fix/makefile-new-script ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install build essentials
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y build-essential make gcc
+      - name: Make - new + build
+        env:
+          # SMOKE_PROG will be injected by the previous step via GITHUB_ENV
+          SMOKE_PROG: ${{ env.SMOKE_PROG }}
+        run: |
+          echo "Using smoke prog: $SMOKE_PROG"
+          make -B new PROG=$SMOKE_PROG
+          make
+      - name: Run smoke test
+        env:
+          SMOKE_PROG: ${{ env.SMOKE_PROG }}
+        run: |
+          if [ -x ./bin/$SMOKE_PROG ]; then ./bin/$SMOKE_PROG; else echo "bin/$SMOKE_PROG missing"; exit 1; fi
+      - name: Setup smoke prog
+        if: always()
+        run: |
+          # compute a reasonably-sized index from run id and write to file
+          IDX=$(( ${GITHUB_RUN_ID:-$RANDOM} % 90 + 11 ))
+          SMOKE="ex$(printf "%02d" $IDX)"
+          echo "SMOKE_PROG=$SMOKE" >> $GITHUB_ENV
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install MSYS2 and make
+        shell: powershell
+        run: |
+          choco install -y msys2
+          refreshenv
+          $env:PATH = "C:\\tools\\msys64\\usr\\bin;" + $env:PATH
+      - name: Ensure gcc and make available
+        shell: bash
+        run: |
+          pacman -Syu --noconfirm || true
+          pacman -S --noconfirm base-devel mingw-w64-x86_64-gcc mingw-w64-x86_64-make
+      - name: Setup smoke prog
+        if: always()
+        shell: bash
+        run: |
+          IDX=$(( ${GITHUB_RUN_ID:-$RANDOM} % 90 + 11 ))
+          SMOKE="ex$(printf "%02d" $IDX)"
+          echo "SMOKE_PROG=$SMOKE" >> $GITHUB_ENV
+      - name: Make - new + build (MSYS)
+        shell: bash
+        env:
+          SMOKE_PROG: ${{ env.SMOKE_PROG }}
+        run: |
+          echo "Using smoke prog: $SMOKE_PROG"
+          make -B new PROG=$SMOKE_PROG
+          make
+      - name: Run smoke test
+        shell: bash
+        env:
+          SMOKE_PROG: ${{ env.SMOKE_PROG }}
+        run: |
+          if [ -x ./bin/$SMOKE_PROG ]; then ./bin/$SMOKE_PROG; else echo "bin/$SMOKE_PROG missing"; exit 1; fi
+
+      - name: Setup smoke prog
+        if: always()
+        run: |
+          # compute a reasonably-sized index from run id and write to file
+          IDX=$(( ${GITHUB_RUN_ID:-$RANDOM} % 90 + 11 ))
+          SMOKE="ex$(printf "%02d" $IDX)"
+          echo "SMOKE_PROG=$SMOKE" >> $GITHUB_ENV

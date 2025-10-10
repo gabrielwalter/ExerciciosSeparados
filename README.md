@@ -51,6 +51,24 @@ Ex03_ParOuImpar/    ← Exercício 3 (verifica par ou ímpar)
    make list
    ```
 
+   ### ➕ Criar um novo exercício
+
+   Você pode criar um esqueleto de exercício (exNN) com o alvo `new` do Makefile. O Make detecta automaticamente um shell POSIX (sh) ou PowerShell e usa o script apropriado:
+
+   ```bash
+   make new PROG=ex11   # cria a pasta Ex11_New com template
+   ```
+
+   Notas de compatibilidade:
+   - Em Linux/macOS/Codespaces o `make` usa o script POSIX `scripts/create_exercise.sh`.
+   - No Windows (VS Code ou Visual Studio) o Make irá preferir PowerShell (`scripts/create_exercise.ps1`) se disponível. No Windows sem PowerShell/WSL instale `make` e um shell compatível (ex: mingw, MSYS2 ou WSL).
+
+   Com isso, o repositório funciona em:
+   - GitHub Codespaces (Linux) — totalmente suportado
+   - VS Code Desktop (Linux/macOS/Windows) — com terminal adequado
+   - Visual Studio 2022 — use a integração CMake ou WSL para compilar/debugar facilmente
+
+
 **Para depurar (F5):**
 - Pressione `F5`
 - É preciso instalar a extensão C/C++ da Microsoft no Codespace
