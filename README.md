@@ -1,4 +1,3 @@
-AINDA A ENTENDER: COMPILAÇÃO N É FEITA NO VS CODE DESKTOP NEM NO LINUX COM O MAKE
 
 # 📚 ExerciciosSeparados
 
