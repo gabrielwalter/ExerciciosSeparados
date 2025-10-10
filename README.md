@@ -25,6 +25,55 @@ Ex03_ParOuImpar/    ← Exercício 3 (verifica par ou ímpar)
 | **ExerciciosSeparados** (este) | Cada exercício é um programa separado | Quando você quer testar um exercício por vez |
 
 ---
+---
+
+## ⚠️ IMPORTANTE: Acentuação e caracteres especiais
+
+### ✅ Este projeto JÁ está configurado!
+
+Cada exercício neste projeto já contém a configuração necessária para exibir acentos corretamente no Windows.
+
+Os arquivos `main.c` de cada exercício já incluem:
+
+```c
+SetConsoleOutputCP(65001);  // Configura console para UTF-8
+SetConsoleCP(65001);
+setlocale(LC_ALL, "pt_BR.UTF-8");
+```
+
+**Isso significa que:**
+- ✅ Quando você **clonar este repositório**, os acentos já funcionarão automaticamente
+- ✅ Você **NÃO precisa fazer nada** após clonar
+- ✅ A configuração já está salva no código e será baixada junto com o projeto
+
+### 🔧 Se você criar um NOVO exercício do zero
+
+Se você for criar um novo exercício em C no Windows e quiser que acentos funcionem:
+
+1. Adicione `#include <windows.h>` no topo do arquivo
+2. No início da função `main()`, adicione:
+   ```c
+   SetConsoleOutputCP(65001);
+   SetConsoleCP(65001);
+   setlocale(LC_ALL, "pt_BR.UTF-8");
+   ```
+3. Salve todos os arquivos `.c` em **UTF-8 com assinatura (BOM)**
+   - No Visual Studio: File → Save As → Save with Encoding → UTF-8 with signature
+
+### 🐛 Se os acentos aparecerem estranhos
+
+Isso pode acontecer se:
+- Você editou arquivos fora do Visual Studio (ex: Notepad)
+- Os arquivos foram salvos em outra codificação
+
+**Solução:**
+1. No Visual Studio, abra cada arquivo `.c`
+2. Vá em File → Advanced Save Options
+3. Escolha **UTF-8 with signature - Codepage 65001**
+4. Salve o arquivo
+5. Compile e execute novamente
+
+---
 
 ## 🚀 COMO USAR - Passo a Passo
 
