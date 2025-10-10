@@ -60,7 +60,7 @@ Ex03_ParOuImpar/    ← Exercício 3 (verifica par ou ímpar)
 </details>
 
 <details>
-<summary><b>💻 Estou no VS Code no Windows</b></summary>
+<summary><b>💻 Estou no VS Code no Windows</b></summary> AZAR!!! NÃO ESTÁ RODANDO O MAKE!! NÃO DEPURA!!
 
 ### Passo 1: Instalar ferramentas necessárias
 
