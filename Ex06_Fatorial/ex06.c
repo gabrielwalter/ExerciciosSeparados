@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// Função recursiva para calcular o fatorial
+// Funï¿½ï¿½o recursiva para calcular o fatorial
 int fatorial(int n) {
     if (n <= 1)
         return 1;
@@ -11,14 +11,14 @@ int fatorial(int n) {
 void Ex06_Fatorial(void) {
     int n;
 
-    printf("Digite um número inteiro positivo: ");
+    printf("Digite um nÃºmero inteiro positivo: ");
     scanf("%d", &n);
 
     if (n < 0) {
-        printf("Fatorial não definido para números negativos.\n");
+        printf("Fatorial nÃ£o definido para nÃºmeros negativos.\n");
         return;
     }
 
     int resultado = fatorial(n);
-    printf("Fatorial de %d é: %d\n", n, resultado);
+    printf("Fatorial de %d Ã©: %d\n", n, resultado);
 }

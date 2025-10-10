@@ -2,7 +2,7 @@
 
 void Ex05_Tabuada(void) {
     int numero;
-    printf("Digite um número para ver a tabuada: ");
+    printf("Digite um nÃºmero para ver a tabuada: ");
     scanf("%d", &numero);
 
     printf("Tabuada de %d:\n", numero);
