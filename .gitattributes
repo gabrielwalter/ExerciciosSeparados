@@ -1,0 +1,8 @@
+# Normalize line endings and force LF for build scripts and Makefile
+* text=auto
+Makefile text eol=lf
+*.sh text eol=lf
+CMakeLists.txt text eol=lf
+*.cmake text eol=lf
+*.ps1 text eol=crlf
+README.md text eol=lf
