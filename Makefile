@@ -67,11 +67,16 @@ run-win:
 run-unix:
 	@bash -lc 'if [ -z "$(PROG)" ]; then echo "Use: make run PROG=ex01"; echo "Exercícios:"; make list; exit 1; fi; echo "Nota: no ambiente Unix/WSL prefira executar o binário diretamente:"; echo "  ./$(BIN_DIR)/$(PROG)"; echo "Ou use: cmake --build build && ./bin/$(PROG)"'
 
+ifeq ($(OS),Windows_NT)
+list:
+	@powershell -NoProfile -ExecutionPolicy Bypass -File scripts\list.ps1
+else
 list:
 	@for dir in $(EXER_DIRS); do \
 		num=$$(echo $$dir | sed 's/Ex\([0-9][0-9]\)_.*/\1/'); \
 		echo "  ex$$num ($$dir)"; \
 	done
+endif
 
 clean:
 ifeq ($(OS),Windows_NT)
@@ -96,21 +101,31 @@ new: new-unix
 endif
 
 new-unix:
-	@if [ -z "$(PROG)" ]; then \
-		echo "Use: make new PROG=ex12 NAME=MeuExercicio"; \
+	@if [ -z "$(PROG)" -a -z "$(NUM)" ]; then \
+		echo "Use: make new PROG=ex12 NAME=MeuExercicio  OR make new NUM=12 NAME=MeuExercicio"; \
 		exit 1; \
 	fi; \
-	num=$$(echo "$(PROG)" | sed -E 's/ex0*([0-9]+)/\1/'); \
+	if [ -z "$(PROG)" ]; then \
+		prog=$$(printf "ex%02d" $(NUM)); \
+	else \
+		prog="$(PROG)"; \
+	fi; \
+	num=$$(echo "$$prog" | sed -E 's/ex0*([0-9]+)/\1/'); \
 	padded=$$(printf "%02d" $$num); \
 	name=$${NAME:-Novo}; \
 	dir="Ex$${padded}_$${name}"; \
 	if [ -d "$$dir" ]; then echo "$$dir already exists"; exit 1; fi; \
 	mkdir -p "$$dir"; \
-	cp .templates/ex_template.c "$$dir/$(PROG).c"; \
+	cp .templates/ex_template.c "$$dir/$$prog.c"; \
 	cp .templates/main_template.c "$$dir/main.c"; \
-	sed -i "s/__PROG__/$(PROG)/g" "$$dir/$(PROG).c"; \
-	sed -i "s/__PROG__/$(PROG)/g" "$$dir/main.c"; \
-	echo "Created $$dir with $(PROG).c and main.c"
+	sed -i "s/__PROG__/$$prog/g" "$$dir/$$prog.c"; \
+	sed -i "s/__PROG__/$$prog/g" "$$dir/main.c"; \
+	mkdir -p $(BIN_DIR); \
+	echo "Created $$dir with $$prog.c and main.c"; \
+	echo "Compiling $$prog to $(BIN_DIR)/ex$$num..."; \
+	$(CC) $(CFLAGS) "$$dir/main.c" -o $(BIN_DIR)/ex$$num || { echo "compilação falhou"; exit 1; }; \
+	if command -v chmod >/dev/null 2>&1; then chmod +x $(BIN_DIR)/ex$$num || true; fi; \
+	echo "Compiled $(BIN_DIR)/ex$$num"
 
 new-win:
 	@powershell -NoProfile -ExecutionPolicy Bypass -File scripts\new.ps1 -Prog '$(PROG)' -Num '$(NUM)' -Name '$(NAME)'
