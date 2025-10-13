@@ -66,6 +66,8 @@ cmake_install.cmake
 bin/
 
 # Binários individuais
+# Ignore generated exercise folders created by make new during tests
+Ex[0-9][0-9]_* 
 ex[0-9][0-9]
 ex[0-9][0-9][0-9]
 
