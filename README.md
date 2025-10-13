@@ -427,6 +427,14 @@ make new NUM=15 NAME=WSLTest
 
 O comando usa os templates em `.templates/` e substitui `__PROG__` pelo nome do programa (`exNN`). No Windows o Make delega a criação para `scripts/new.ps1` (PowerShell); em ambientes POSIX a criação é feita pelo fluxo de make/bash.
 
+Nota importante sobre comportamento por plataforma:
+
+- No WSL / Linux / macOS: `make new` cria os arquivos a partir dos templates e, em seguida, tenta compilar apenas o exercício recém-criado (gera `bin/exNN`). Isso facilita testar rapidamente o exercício recém-criado.
+
+- No Windows (PowerShell): `make new` apenas cria os arquivos (não compila automaticamente). Isso evita dependências de compilador/ambiente no Windows e mantém o processo explícito.
+
+Se você quiser que o Windows também compile automaticamente, posso adicionar isso — me pergunte antes, pois pode falhar se o Visual Studio/MinGW não estiver configurado.
+
 
 Isso vai criar a pasta `Ex11_MeuExercicio/` com um `main.c` pronto!
 
