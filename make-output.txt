@@ -1,0 +1,51 @@
+Building (Windows) with build.ps1
+Iniciando build (PowerShell)...
+Cleaning existing build directory...
+-- Building for: Visual Studio 17 2022
+-- The C compiler identification is MSVC 19.44.35217.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done (2.1s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/build
+Versão do MSBuild 17.14.23+b0019275e para .NET Framework
+
+  1>Checking Build System
+  Building Custom Rule C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/CMakeLists.txt
+  main.c
+  ex01.vcxproj -> C:\Users\gabri\Documents\gitzinho\ExerciciosSeparados\bin\Release\ex01.exe
+  Building Custom Rule C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/CMakeLists.txt
+  main.c
+  ex02.vcxproj -> C:\Users\gabri\Documents\gitzinho\ExerciciosSeparados\bin\Release\ex02.exe
+  Building Custom Rule C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/CMakeLists.txt
+  main.c
+  ex03.vcxproj -> C:\Users\gabri\Documents\gitzinho\ExerciciosSeparados\bin\Release\ex03.exe
+  Building Custom Rule C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/CMakeLists.txt
+  main.c
+  ex04.vcxproj -> C:\Users\gabri\Documents\gitzinho\ExerciciosSeparados\bin\Release\ex04.exe
+  Building Custom Rule C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/CMakeLists.txt
+  main.c
+  ex05.vcxproj -> C:\Users\gabri\Documents\gitzinho\ExerciciosSeparados\bin\Release\ex05.exe
+  Building Custom Rule C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/CMakeLists.txt
+  main.c
+  ex06.vcxproj -> C:\Users\gabri\Documents\gitzinho\ExerciciosSeparados\bin\Release\ex06.exe
+  Building Custom Rule C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/CMakeLists.txt
+  main.c
+  ex07.vcxproj -> C:\Users\gabri\Documents\gitzinho\ExerciciosSeparados\bin\Release\ex07.exe
+  Building Custom Rule C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/CMakeLists.txt
+  main.c
+  ex08.vcxproj -> C:\Users\gabri\Documents\gitzinho\ExerciciosSeparados\bin\Release\ex08.exe
+  Building Custom Rule C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/CMakeLists.txt
+  main.c
+  ex09.vcxproj -> C:\Users\gabri\Documents\gitzinho\ExerciciosSeparados\bin\Release\ex09.exe
+  Building Custom Rule C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/CMakeLists.txt
+  main.c
+  ex10.vcxproj -> C:\Users\gabri\Documents\gitzinho\ExerciciosSeparados\bin\Release\ex10.exe
+  Building Custom Rule C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/CMakeLists.txt
+  main.c
+  ex11.vcxproj -> C:\Users\gabri\Documents\gitzinho\ExerciciosSeparados\bin\Release\ex11.exe
+  Building Custom Rule C:/Users/gabri/Documents/gitzinho/ExerciciosSeparados/CMakeLists.txt
+Build concluÃ­do. Verifique a pasta build\ e bin\ (se o projeto gerar binÃ¡rios lÃ¡).

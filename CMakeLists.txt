@@ -5,9 +5,16 @@ project(ExerciciosSeparados C)
 set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-# Diretório bin portátil
-set(EXECUTABLE_OUTPUT_PATH "${CMAKE_SOURCE_DIR}/bin")
-file(MAKE_DIRECTORY "${EXECUTABLE_OUTPUT_PATH}")
+# Diretório bin portátil - direto em bin/ sem subpastas
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+
+# Para geradores multi-config (Visual Studio), força todos os configs em bin/ direto
+foreach(OUTPUTCONFIG ${CMAKE_CONFIGURATION_TYPES})
+    string(TOUPPER ${OUTPUTCONFIG} OUTPUTCONFIG_UPPER)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_${OUTPUTCONFIG_UPPER} "${CMAKE_SOURCE_DIR}/bin")
+endforeach()
+
+file(MAKE_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 
 # Detecta todas as pastas Ex##_*
 file(GLOB EXER_DIRS RELATIVE "${CMAKE_SOURCE_DIR}" "Ex[0-9][0-9]_*")
@@ -26,9 +33,6 @@ foreach(dir ${EXER_DIRS})
                 else()
                     target_compile_options(${target} PRIVATE -Wall -Wextra -g)
                 endif()
-                set_target_properties(${target} PROPERTIES
-                    RUNTIME_OUTPUT_DIRECTORY "${EXECUTABLE_OUTPUT_PATH}"
-                )
             endif()
         endif()
     endif()

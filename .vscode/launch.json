@@ -2,7 +2,31 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug ex01",
+      "name": "Debug ex01 (Windows)",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/ex01.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "console": "integratedTerminal",
+      "preLaunchTask": "Compilar com Make"
+    },
+    {
+      "name": "Debug - Escolher exercício (Windows)",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/bin/${input:exercicio}.exe",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "console": "integratedTerminal",
+      "preLaunchTask": "Compilar com Make"
+    },
+    {
+      "name": "Debug ex01 (WSL)",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/bin/ex01",
@@ -20,10 +44,19 @@
         }
       ],
       "preLaunchTask": "Compilar com Make",
-      "miDebuggerPath": "/usr/bin/gdb"
+      "miDebuggerPath": "/usr/bin/gdb",
+      "pipeTransport": {
+        "pipeCwd": "",
+        "pipeProgram": "wsl.exe",
+        "pipeArgs": [],
+        "debuggerPath": "/usr/bin/gdb"
+      },
+      "sourceFileMap": {
+        "/mnt/c": "C:\\"
+      }
     },
     {
-      "name": "Debug - Escolher exercício",
+      "name": "Debug - Escolher exercício (WSL)",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/bin/${input:exercicio}",
@@ -41,7 +74,16 @@
         }
       ],
       "preLaunchTask": "Compilar com Make",
-      "miDebuggerPath": "/usr/bin/gdb"
+      "miDebuggerPath": "/usr/bin/gdb",
+      "pipeTransport": {
+        "pipeCwd": "",
+        "pipeProgram": "wsl.exe",
+        "pipeArgs": [],
+        "debuggerPath": "/usr/bin/gdb"
+      },
+      "sourceFileMap": {
+        "/mnt/c": "C:\\"
+      }
     }
   ],
   "inputs": [
