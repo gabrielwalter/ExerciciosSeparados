@@ -85,9 +85,17 @@ help:
 	@echo "make run PROG=ex01 - executa"
 	@echo "make list    - lista exercícios"
 	@echo "make clean   - limpa binários"
+	@echo "make new PROG=ex12 NAME=MeuExercicio - cria novo exercício (unix/wsl)"
+	@echo "  ou: make new NUM=12 NAME=MeuExercicio - cria novo exercício (aceita NUM ou PROG)"
 
-.PHONY: new
-new:
+.PHONY: new new-unix new-win
+ifeq ($(OS),Windows_NT)
+new: new-win
+else
+new: new-unix
+endif
+
+new-unix:
 	@if [ -z "$(PROG)" ]; then \
 		echo "Use: make new PROG=ex12 NAME=MeuExercicio"; \
 		exit 1; \
@@ -103,3 +111,6 @@ new:
 	sed -i "s/__PROG__/$(PROG)/g" "$$dir/$(PROG).c"; \
 	sed -i "s/__PROG__/$(PROG)/g" "$$dir/main.c"; \
 	echo "Created $$dir with $(PROG).c and main.c"
+
+new-win:
+	@powershell -NoProfile -ExecutionPolicy Bypass -File scripts\new.ps1 -Prog '$(PROG)' -Num '$(NUM)' -Name '$(NAME)'

@@ -324,6 +324,30 @@ make
 make run PROG=ex01
 ```
 
+### Erro: CMakeCache.txt criado em outro caminho (WSL vs Windows)
+
+Se você alternar entre executar CMake no Windows (PowerShell / Visual Studio) e em um ambiente Unix-like (WSL, Git Bash ou Codespaces), pode ver um erro parecido com:
+
+> The current CMakeCache.txt directory ... is different than the directory ... where CMakeCache.txt was created.
+
+Isso acontece porque o CMake salva caminhos absolutos no cache e, ao rodar em outro subsystem (ex.: `/mnt/c/...` vs `C:/...`), os caminhos não batem. A solução simples é limpar a pasta `build` antes de reconfigurar:
+
+```bash
+# Em bash/WSL/Codespaces
+rm -rf build
+cmake -S . -B build
+cmake --build build
+```
+
+No PowerShell (Windows):
+
+```powershell
+Remove-Item -Recurse -Force build
+.\build.ps1
+```
+
+Após isso, reconfigure o projeto no ambiente desejado (Visual Studio, PowerShell, WSL, etc.) e os builds funcionarão normalmente.
+
 ### No Visual Studio: não aparece "ex01.exe" na lista
 **Solução:** 
 1. Feche o Visual Studio
@@ -381,6 +405,28 @@ cmake --build build     # Compila TODOS
 ```bash
 make new NUM=11 NAME=MeuExercicio
 ```
+
+### Criar novo exercício automaticamente com `make new`
+
+Você também pode criar um novo exercício a partir dos templates com o alvo `make new`.
+
+- No Windows (PowerShell):
+
+```powershell
+make new PROG=ex13 NAME=Ex13    # cria Ex13_Ex13/ex13.c e main.c
+make new NUM=14 NAME=Teste      # cria Ex14_Teste/ex14.c e main.c
+```
+
+- No WSL / Linux / macOS (bash):
+
+```bash
+make new PROG=ex15 NAME=WSLTest
+# ou
+make new NUM=15 NAME=WSLTest
+```
+
+O comando usa os templates em `.templates/` e substitui `__PROG__` pelo nome do programa (`exNN`). No Windows o Make delega a criação para `scripts/new.ps1` (PowerShell); em ambientes POSIX a criação é feita pelo fluxo de make/bash.
+
 
 Isso vai criar a pasta `Ex11_MeuExercicio/` com um `main.c` pronto!
 
