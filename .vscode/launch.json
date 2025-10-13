@@ -23,7 +23,7 @@
       "miDebuggerPath": "/usr/bin/gdb"
     },
     {
-      "name": "Debug - Escolher exerc\u00edcio",
+      "name": "Debug - Escolher exercício",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/bin/${input:exercicio}",
@@ -35,7 +35,7 @@
       "MIMode": "gdb",
       "setupCommands": [
         {
-          "description": "Habilitar impress\u00e3o formatada para gdb",
+          "description": "Habilitar impressão formatada para gdb",
           "text": "-enable-pretty-printing",
           "ignoreFailures": true
         }
@@ -48,7 +48,7 @@
     {
       "id": "exercicio",
       "type": "promptString",
-      "description": "Nome do exerc\u00edcio (ex: ex01, ex02, etc)",
+      "description": "Nome do exercício (ex: ex01, ex02, etc)",
       "default": "ex01"
     }
   ]

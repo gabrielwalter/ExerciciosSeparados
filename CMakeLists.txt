@@ -16,15 +16,20 @@ foreach(dir ${EXER_DIRS})
     if(IS_DIRECTORY "${CMAKE_SOURCE_DIR}/${dir}")
         if(EXISTS "${CMAKE_SOURCE_DIR}/${dir}/main.c")
             string(REGEX REPLACE "^Ex([0-9][0-9])_.*$" "ex\\1" target "${dir}")
-            add_executable(${target} "${dir}/main.c")
-            if(MSVC)
-                target_compile_options(${target} PRIVATE /W4 /utf-8)
+            # If a target with this name was already created, skip to avoid duplicate-target errors
+            if (TARGET ${target})
+                message(WARNING "Skipping ${dir}: target '${target}' already exists (possible duplicate directory)")
             else()
-                target_compile_options(${target} PRIVATE -Wall -Wextra -g)
+                add_executable(${target} "${dir}/main.c")
+                if(MSVC)
+                    target_compile_options(${target} PRIVATE /W4 /utf-8)
+                else()
+                    target_compile_options(${target} PRIVATE -Wall -Wextra -g)
+                endif()
+                set_target_properties(${target} PROPERTIES
+                    RUNTIME_OUTPUT_DIRECTORY "${EXECUTABLE_OUTPUT_PATH}"
+                )
             endif()
-            set_target_properties(${target} PROPERTIES
-                RUNTIME_OUTPUT_DIRECTORY "${EXECUTABLE_OUTPUT_PATH}"
-            )
         endif()
     endif()
 endforeach()

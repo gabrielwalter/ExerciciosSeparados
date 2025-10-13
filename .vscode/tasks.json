@@ -6,8 +6,7 @@
       "type": "shell",
       "command": "make",
       "group": {
-        "kind": "build",
-        "isDefault": true
+        "kind": "build"
       },
       "problemMatcher": [
         "$gcc"
@@ -40,7 +39,20 @@
         "."
       ],
       "group": "build",
-      "detail": "Configura o projeto com CMake"
+      "dependsOn": ["CMake: Clean Build"],
+      "detail": "Configura o projeto com CMake (depende de limpeza de build para evitar cache WSL/Windows)"
+    },
+    {
+      "label": "CMake: Clean Build",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "if (Test-Path -Path build) { Remove-Item -Recurse -Force build }"
+      ],
+      "problemMatcher": [],
+      "detail": "Remove a pasta build para evitar conflitos de cache entre WSL e Windows"
     },
     {
       "label": "CMake: Build",
@@ -50,7 +62,10 @@
         "--build",
         "build"
       ],
-      "group": "build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "dependsOn": [
         "CMake: Configure"
       ],
