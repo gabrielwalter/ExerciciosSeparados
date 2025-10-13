@@ -1,7 +1,9 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-void Ex03_ParOuImpar() {
+// static: previne erro de múltipla definição (LNK2005) no Visual Studio
+// quando múltiplos arquivos .c são compilados juntos no mesmo projeto
+static void Ex03_ParOuImpar() {
     int numero = 0;
 
     printf("Digite um número: ");

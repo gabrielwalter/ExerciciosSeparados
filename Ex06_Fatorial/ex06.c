@@ -1,14 +1,17 @@
 #include <stdio.h>
 
-// Fun��o recursiva para calcular o fatorial
-int fatorial(int n) {
+// static: previne erro de múltipla definição (LNK2005) no Visual Studio
+// quando múltiplos arquivos .c são compilados juntos no mesmo projeto
+
+// Função recursiva para calcular o fatorial
+static int fatorial(int n) {
     if (n <= 1)
         return 1;
     else
         return n * fatorial(n - 1);
 }
 
-void Ex06_Fatorial(void) {
+static void Ex06_Fatorial(void) {
     int n;
 
     printf("Digite um número inteiro positivo: ");

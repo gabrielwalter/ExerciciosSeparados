@@ -1,6 +1,8 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 
-void imprimeSequencia(int inicio, int fim) {
+// static: previne erro de múltipla definição (LNK2005) no Visual Studio
+// quando múltiplos arquivos .c são compilados juntos no mesmo projeto
+static void imprimeSequencia(int inicio, int fim) {
     if (inicio > fim) {
         printf("O valor inicial deve ser menor ou igual ao final.\n");
         return;
@@ -13,7 +15,7 @@ void imprimeSequencia(int inicio, int fim) {
     printf("\n");
 }
 
-void Ex09_ImprimeSequencia(void) {
+static void Ex09_ImprimeSequencia(void) {
     int inicio, fim;
 
     printf("Digite o valor inicial: ");

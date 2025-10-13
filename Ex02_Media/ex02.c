@@ -1,7 +1,7 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-void Ex02_Media() {
+static void Ex02_Media() {
     float n1 = 0, n2 = 0, n3 = 0;
 
     printf("Digite três notas: ");

@@ -3,7 +3,9 @@
 
 #define SENHA_CORRETA "1234"
 
-void Ex10_ValidaSenha(void) {
+// static: previne erro de múltipla definição (LNK2005) no Visual Studio
+// quando múltiplos arquivos .c são compilados juntos no mesmo projeto
+static void Ex10_ValidaSenha(void) {
     char senha[20];
     int tentativas = 3;
 

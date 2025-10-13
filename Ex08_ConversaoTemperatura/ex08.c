@@ -1,6 +1,8 @@
 #include <stdio.h>
 
-void Ex08_ConversaoTemperatura(void) {
+// static: previne erro de múltipla definição (LNK2005) no Visual Studio
+// quando múltiplos arquivos .c são compilados juntos no mesmo projeto
+static void Ex08_ConversaoTemperatura(void) {
     int opcao;
     float temperatura, convertido;
 
